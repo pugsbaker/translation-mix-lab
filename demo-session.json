@@ -1,0 +1,29 @@
+{
+  "model": "gpt-4o-mini-tts",
+  "tracks": {
+    "customerOriginal": {
+      "text": "Hola, mi pedido debía llegar ayer, pero todavía no lo he recibido. ¿Podría ayudarme a saber dónde está?",
+      "voice": "marin",
+      "audioUrl": "audio/customerOriginal.wav",
+      "sha256": "a4c92e93320a05b2049fbb6c8acb537be17f2aad4c51725aaa44d048c70961d3"
+    },
+    "customerTranslation": {
+      "text": "Hello, my order was supposed to arrive yesterday, but I still haven’t received it. Could you help me find out where it is?",
+      "voice": "marin",
+      "audioUrl": "audio/customerTranslation.wav",
+      "sha256": "b507ebaafe8505dc3f8917febab8a1c4e6547eae44910f4d2d06178226dd5db9"
+    },
+    "agentOriginal": {
+      "text": "Of course. I’m sorry about the delay. I can check that for you now. Could you please give me your order number?",
+      "voice": "cedar",
+      "audioUrl": "audio/agentOriginal.wav",
+      "sha256": "c568386c43bcad0ac7f393fba9bd74701d211d4744e28aaf6ea62ebdca888b61"
+    },
+    "agentTranslation": {
+      "text": "Por supuesto. Lamento la demora. Puedo revisarlo ahora mismo. ¿Podría darme su número de pedido, por favor?",
+      "voice": "cedar",
+      "audioUrl": "audio/agentTranslation.wav",
+      "sha256": "b1bfffdf5951e22de31cd1da73edd0aa0c3508d04d868dc3ebebeab4f0a7cbfa"
+    }
+  }
+}
