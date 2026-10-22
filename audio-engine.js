@@ -1,3 +1,5 @@
+export const DEFAULT_VIEW_MODE = 'focus';
+export const DEFAULT_FOCUS_PARTICIPANT = 'agent';
 export const TRACKS = ['customerOriginal', 'customerTranslation', 'agentOriginal', 'agentTranslation'];
 export const MIX_PRESETS = [
   { id: 'silent', label: 'Silent original', original: 0, translation: 85 },
@@ -47,8 +49,8 @@ export class Mixer {
     this.playing = false;
     this.sources = [];
     this.monitorEnabled = false;
-    this.viewMode = 'listener';
-    this.focusParticipant = 'agent';
+    this.viewMode = DEFAULT_VIEW_MODE;
+    this.focusParticipant = DEFAULT_FOCUS_PARTICIPANT;
     this.focusLevels = Object.fromEntries(['agent', 'customer'].map(side => [side, defaultFocusLevels(side)]));
     this.levels = Object.fromEntries(TRACKS.map(id => [id, id.endsWith('Original') ? 0.12 : 0.85]));
     this.buses = Object.fromEntries(['agent', 'customer'].map(id => {

@@ -1,4 +1,4 @@
-import { Mixer, TRACKS, MIX_PRESETS, presetForLevels, focusTracks, defaultFocusLevels } from './audio-engine.js';
+import { Mixer, TRACKS, MIX_PRESETS, presetForLevels, focusTracks, defaultFocusLevels, DEFAULT_VIEW_MODE, DEFAULT_FOCUS_PARTICIPANT } from './audio-engine.js';
 const $ = id => document.getElementById(id);
 const definitions = {
   customerOriginal: { name: 'Customer original', language: 'Spanish', voice: 'marin', text: 'Hola, mi pedido debía llegar ayer, pero todavía no lo he recibido. ¿Podría ayudarme a saber dónde está?', type: 'ORIGINAL', container: 'agentTracks' },
@@ -7,7 +7,7 @@ const definitions = {
   agentTranslation: { name: 'Agent translation', language: 'Spanish', voice: 'cedar', text: 'Por supuesto. Lamento la demora. Puedo revisarlo ahora mismo. ¿Podría darme su número de pedido, por favor?', type: 'TRANSLATION', container: 'customerTracks' },
 };
 let mixer, config, generating = false, loadedSignature = '';
-let viewMode = 'listener', focusParticipant = 'agent';
+let viewMode = DEFAULT_VIEW_MODE, focusParticipant = DEFAULT_FOCUS_PARTICIPANT;
 const focusLevels = Object.fromEntries(['agent', 'customer'].map(side => [side, defaultFocusLevels(side)]));
 const focusPresetNames = { silent: 'Silent soft tracks', soft: 'Soft monitoring', medium: 'Medium monitoring', strong: 'Strong monitoring', equal: 'Equal levels' };
 function engine() {
@@ -79,8 +79,7 @@ for (const preset of MIX_PRESETS) {
   });
   $('presetButtons').append(button);
 }
-renderFocus();
-updatePresetState();
+updateView();
 function renderFocus() {
   const name = focusParticipant === 'agent' ? 'Agent' : 'Customer';
   $('focusTitle').textContent = `${name} focus · all four tracks`;
@@ -104,6 +103,8 @@ function renderFocus() {
 }
 function updateView() {
   const focus = viewMode === 'focus';
+  document.querySelectorAll('input[name="viewMode"]').forEach(input => { input.checked = input.value === viewMode; });
+  document.querySelectorAll('input[name="focusParticipant"]').forEach(input => { input.checked = input.value === focusParticipant; });
   $('listenerOptions').hidden = focus; $('focusOptions').hidden = !focus;
   $('listenerMixer').hidden = focus; $('focusMixer').hidden = !focus;
   $('monitorOption').hidden = focus;
