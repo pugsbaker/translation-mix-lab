@@ -153,6 +153,7 @@ function tick() {
     }
   }
   $('play').textContent = mixer?.playing ? 'Ⅱ Pause preview' : '▶ Play preview';
+  document.body.classList.toggle('is-playing', Boolean(mixer?.playing));
   requestAnimationFrame(tick);
 }
 tick();
